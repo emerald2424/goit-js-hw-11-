@@ -29,7 +29,7 @@ let observer = new IntersectionObserver(onLoad, observerOptions);
 function onSearch(evt) {
     evt.preventDefault();
     galleryList.innerHTML = '';
-    page = 1;
+    // page = 1;
     query = input.value;
     
     fetchImages(query, page = 1)
