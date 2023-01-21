@@ -32,7 +32,8 @@ async function onSearch(evt) {
     // loadMoreBtn.classList.remove('load-btn-visible');
     galleryList.innerHTML = '';
     page = 1;
-        
+    observer.unobserve(guard);
+       
     query = input.value.trim();
     if (query === '') {
         return Notify.info("Please, enter the category you are interested in!")
