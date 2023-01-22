@@ -12,8 +12,10 @@ const input = document.querySelector('input[name="searchQuery"]')
 const galleryList = document.querySelector('.gallery');
 const API_KEY = '32852633-0625716e22432e941df8357a0';
 const guard = document.querySelector('.js-guard');
+const guard2 = document.querySelector('.js-guard_2');
 let gallery = new SimpleLightbox('.gallery a');
 let page = 1;
+let pages;
 let query = '';
 searchForm.addEventListener('submit', onSearch);
 // loadMoreBtn.addEventListener('click', loadMore);
@@ -25,6 +27,8 @@ let observerOptions = {
     threshold: 0
 }
 let observer = new IntersectionObserver(onLoad, observerOptions);
+let observer2 = new IntersectionObserver(onCompleteLoad, observerOptions);
+
 
 async function onSearch(evt) {
     evt.preventDefault();
@@ -33,6 +37,7 @@ async function onSearch(evt) {
     galleryList.innerHTML = '';
     page = 1;
     observer.unobserve(guard);
+    observer2.unobserve(guard2);
        
     query = input.value.trim();
     if (query === '') {
@@ -117,16 +122,10 @@ async function loadMore() {
         // });
         
         gallery.refresh();
-        
-        const pages = data.totalHits / 40;
-        if (pages <= page) {
-            // loadMoreBtn.hidden = true;
-            // loadMoreBtn.classList.remove('load-btn-visible');
-            
+        pages = Math.ceil(data.totalHits / 40);
+        if (pages === page) {
+            observer2.observe(guard2);
             observer.unobserve(guard);
-            if(data.totalHits > 40) {
-                Notify.info("We're sorry, but you've reached the end of search results.");
-            }
         }
     } catch(error) {
         console.log(error)
@@ -137,6 +136,14 @@ function onLoad(entries, observer) {
     entries.forEach(entry => {
         if(entry.isIntersecting) {
             loadMore();
-        }
+        }    
+    })
+}
+
+function onCompleteLoad(entries, observer) {
+    entries.forEach(entry => {
+        if(entry.isIntersecting && pages === page) {
+            Notify.info("We're sorry, but you've reached the end of search results.");
+        }    
     })
 }
