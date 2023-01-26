@@ -9,7 +9,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #e6e6ed;
   color: #212121;
+  font-size: 16px;
   line-height: 1.5;
+}
+
+h1,
+h2 {
+  text-align: center;
 }
 
 img {
@@ -19,6 +25,10 @@ img {
 
 a {
   text-decoration: none;
+}
+
+.instruction {
+  text-align: center;
 }
 
 .gallery {
@@ -34,10 +44,17 @@ a {
   display: flex;
   gap: 10px;
   justify-content: center;
+  width: 100%;
+  max-width: 840px;
+  margin: 30px auto;
   padding: 15px;
+  border-radius: 50px;
   background-color: rgb(88, 162, 162);
 }
-
+.input {
+  width: 320px;
+  padding: 4px 10px;
+}
 .photo-card {
   width: 349px;
   background-color: rgb(246, 250, 254);
@@ -52,13 +69,20 @@ a {
 
 .info-item {
   text-align: center;
-  font-size: 16px;
   color: #212121;
 }
+/* .btn {
+  border-radius: 50px;
+  padding: 4px 15px;
+} */
 
 .load-btn-visible {
   display: block;
-  margin: 0 auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  padding: 15px;
+  background-color: rgb(88, 162, 162);
+  border-radius: 50px;
+  border: none;
 }

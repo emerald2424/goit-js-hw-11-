@@ -7,14 +7,23 @@
     <link rel="stylesheet" href="./css/common.css" />
   </head>
   <body>
+    <header class="header">
+      <h1>STUNNING IMAGES</h1>
+      <h2>Search for free images</h2>
+      <p class="instruction">
+        Enter the category you are interested in. For example: squirrel, spy,
+        moon, nature, etc.
+      </p>
+    </header>
     <form class="search-form" id="search-form">
       <input
+        class="input"
         type="text"
         name="searchQuery"
         autocomplete="off"
         placeholder="Search images..."
       />
-      <button type="submit">Search</button>
+      <button class="btn" type="submit">Search</button>
     </form>
     <div class="gallery">
       <!-- Картки зображень -->
